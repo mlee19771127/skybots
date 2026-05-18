@@ -16,7 +16,7 @@ PROJECTS_URL = "https://dash.aclclouds.com/projects"
 NEXT_TIME_FILE = Path("next_time.txt")
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", "").strip()
-PROXY = os.environ.get("PROXY_URL", "").strip()
+ACLCLOUDS_PROXY_NODE = os.environ.get("Aclclouds_PROXY_NODE", "").strip()
 
 TG_TOKEN = os.environ.get("TG_BOT_TOKEN", "").strip()
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "").strip()
@@ -235,9 +235,9 @@ def main():
         "headless": True,
         "args": browser_args,
     }
-    if PROXY:
-        launch_kwargs["proxy"] = {"server": PROXY}
-        print(f"🛡️ 使用代理: {PROXY}")
+    if ACLCLOUDS_PROXY_NODE:
+        launch_kwargs["proxy"] = {"server": ACLCLOUDS_PROXY_NODE}
+        print(f"🛡️ 使用代理: {ACLCLOUDS_PROXY_NODE}")
 
     print("🔧 启动 Playwright Chromium 浏览器...")
     with sync_playwright() as playwright:
